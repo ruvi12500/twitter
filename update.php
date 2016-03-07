@@ -14,8 +14,9 @@ if(isset($_POST["update"])){
 	$update->bind_param('si', $_POST["update"],$_GET["id"]);
 	$update->execute();
 	header('location:tweet.php');
-	exit();	
+	exit();
 }
+
 ?>
 <form action="" method="POST">
 

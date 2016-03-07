@@ -5,7 +5,6 @@
 </head>
 <body>
 <?php
-//接続
 $mysqli = new mysqli('localhost', 'takumi_asai', 'asataku', 'twitter');
 
 $query = "SELECT * FROM tweet ORDER BY TweetDate desc;";
@@ -26,7 +25,6 @@ if ($result = $mysqli->query($query)) {
 	        	echo " 削除されています。";
 	        }
 	        echo "</td></tr>";
-		
 	}
 }
 ?>
