@@ -21,13 +21,12 @@ if(isset($_POST["update"])){
 
 <?php
 /*
-$stmt = $mysqli->prepare("SELECT * FROM tweet where ID = ?");
-if ($stmt->execute($_GET["id"])) {
-	while ($row = $stmt->fetch()) {
-		echo $row["Tweet"];
+	$stmt = $mysqli->prepare("SELECT * FROM tweet where ID = ?");
+	if ($stmt->execute($_GET["id"])) {
+		while ($row = $stmt->fetch()) {
+			echo $row["Tweet"];
+		}
 	}
-}
-
 */
 ?>
 <input type="text" name="update">

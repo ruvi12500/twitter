@@ -18,10 +18,12 @@ $query = "SELECT * FROM tweet ORDER BY TweetDate desc;";
 if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
 	        echo "<tr><td>";
+	        echo "ツイート:";
 	        echo $row["Tweet"];
+	        echo "　日時：";
 	        echo $row["TweetDate"];
 	        if($row["DeleteFlg"] == 1){
-	        	echo "削除されています。";
+	        	echo " 削除されています。";
 	        }
 	        echo "</td></tr>";
 		

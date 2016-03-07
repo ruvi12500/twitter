@@ -22,7 +22,7 @@ if(isset($_POST["tweet"]) && isset($_POST["tweetnow"])){
 }
 
 //削除ボタン
-if(isset($_POST["delete"]) && $_POST["ID"]){
+if(isset($_POST["delete"]) && isset($_POST["ID"])){
 	$delete = $mysqli->prepare("update tweet set DeleteFlg = 1 WHERE ID = ?");
 	$delete->bind_param('i', $_POST["ID"]);
 	$delete->execute();
@@ -49,13 +49,13 @@ if ($result = $mysqli->query($query)) {
 			echo "<tr><td>";
 			echo $row["Tweet"];
 			echo $row["TweetDate"];
+			/*
 			echo "<input type='submit' name='delete' value='削除'>";
 			echo "<input type='hidden' name='ID' value=".$row["ID"].">";
+			*/
 			echo "<a href='tweet.php?id=".$row["ID"]."'>削除</a>";
 			echo "<a href='update.php?id=".$row["ID"]."'>編集</a>";
 			echo "</td></tr>";
-
-
 		}
 	}
 }
