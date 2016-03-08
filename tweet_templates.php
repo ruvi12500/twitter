@@ -10,11 +10,12 @@
 <a href="history.php">履歴</a>
 <h1>ツイート一覧</h1>
 <table>
-    <? tweet_post($_POST['tweet'],$_POST['tweetbtn']); ?>
-    <? tweet_delete($_GET['id']); ?>
-    <? tweet_list(); ?>
-</form>
-</table>
 
+    <? $tweet_class->tweet_post($tweet_class->getTweet(),$tweet_class->getTweetBtn()); ?>
+    <? $tweet_class->tweet_delete($tweet_class->getTweetDelete()); ?>
+    <? $tweet_class->tweet_list(); ?>
+
+</table>
+</form>
 </body>
 </html>

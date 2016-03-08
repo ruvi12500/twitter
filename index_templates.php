@@ -6,11 +6,11 @@
 </head>
 <body>
     <h1>ログインページ</h1>
-    <? if ($status == "logged_in") { ?>
+    <? if ($login_class->getStatus() == "logged_in") { ?>
         <p>ログイン済みです。</p>
-    <? } elseif ($status == "login") { ?>
+    <? } elseif ($login_class->getStatus() == "login") { ?>
         <?= $_SESSION['mailaddress'];?>
-    <? } elseif ($status == "failed") { ?>
+    <? } elseif ($login_class->getStatus() == "failed") { ?>
         <p>メールアドレスもしくはパスワードが違います。</p>
     <? } else { ?>
         <form action="" method="POST">
