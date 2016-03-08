@@ -36,15 +36,13 @@ class Login
         return $this->status;
     }
 
-
     public function connect_db()
     {
-        $class = new Login();
         $mysqli = new mysqli(
-            $class->host,
-            $class->db_user,
-            $class->db_pass,
-            $class->use_db
+            $this->host,
+            $this->db_user,
+            $this->db_pass,
+            $this->use_db
         );
             if ($mysqli->connect_error) {
                 die('Connect Error (' . $mysqli->connect_errno . ') '
@@ -56,9 +54,9 @@ class Login
 
     public function login_check($mailaddress,$password)
     {
-    //session_start();
-    $mysqli = $this->connect_db();
 
+    $mysqli = $this->connect_db();
+        session_start();
         if (isset($_SESSION["mailaddress"])) {
             $this->setStatus('logged_in');
         } elseif (!empty($mailaddress) OR !empty($password)) {

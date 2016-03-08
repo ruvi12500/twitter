@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Twitter履歴</title>
 </head>
 <body>
 <form action="" method="POST">
 <table>
-<? tweet_list(); ?>
+<? $history_class->tweet_list(); ?>
 <a href="tweet.php">戻る</a>
 </form>
 </table>

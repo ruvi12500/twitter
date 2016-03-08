@@ -7,9 +7,9 @@
 <body>
     <h1>ログインページ</h1>
     <? if ($login_class->getStatus() == "logged_in") { ?>
-        <p>ログイン済みです。</p>
+        <p><a href="tweet.php">ログイン済みです。</a></p>
     <? } elseif ($login_class->getStatus() == "login") { ?>
-        <?= $_SESSION['mailaddress'];?>
+        <p><a href="tweet.php">ログインに成功しました。</a></p>
     <? } elseif ($login_class->getStatus() == "failed") { ?>
         <p>メールアドレスもしくはパスワードが違います。</p>
     <? } else { ?>

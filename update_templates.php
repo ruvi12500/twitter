@@ -7,8 +7,8 @@
 
 <form action="" method="POST">
 <input type="text" name="update">
-<input type="submit" value = "確定">
-<? tweet_update($_POST['update'],$_GET['id']); ?>
+<input type="submit" name="updatebtn" value = "確定">
+<? $update_class->tweet_update($update_class->getTweetUpdate(),$update_class->getTweetId()); ?>
 <br>
 <a href="tweet.php">戻る</a>
 </form>

@@ -38,12 +38,11 @@ class Twitter
 
     public function connect_db()
     {
-        $class = new Twitter();
         $mysqli = new mysqli(
-            $class->host,
-            $class->db_user,
-            $class->db_pass,
-            $class->use_db
+            $this->host,
+            $this->db_user,
+            $this->db_pass,
+            $this->use_db
         );
             if ($mysqli->connect_error) {
                 die('Connect Error (' . $mysqli->connect_errno . ') '
@@ -60,7 +59,7 @@ class Twitter
         $query = "SELECT * FROM tweet ORDER BY TweetDate desc";
         if ($result = $mysqli->query($query)) {
             while ($row = $result->fetch_assoc()) {
-                if($row['DeleteFlg'] == $Tweeted) { ?>
+                if ($row['DeleteFlg'] == $Tweeted) { ?>
                     <tr><td>
                     <?= $row['Tweet'] ?>
                     <?= $row['TweetDate'] ?>
@@ -107,6 +106,7 @@ class Twitter
 }
 
 $tweet_class = new Twitter();
+
 if (isset($_POST['tweet']) && isset($_POST['tweetbtn'])) {
     $tweet_class->setTweet($_POST['tweet']);
     $tweet_class->setTweetBtn($_POST['tweetbtn']);
