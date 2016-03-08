@@ -6,13 +6,15 @@
 <body>
 <form action="" method="POST">
 <input type="text" name="tweet">
-<input type="submit" name='tweetbtn' value="ツイート">
-
+<input type="submit" name='tweetbtn' value="ツイート"><br>
+<a href="history.php">履歴</a>
 <h1>ツイート一覧</h1>
 <table>
-<? tweet_list();?>
+    <? tweet_post($_POST['tweet'],$_POST['tweetbtn']); ?>
+    <? tweet_delete($_GET['id']); ?>
+    <? tweet_list(); ?>
 </form>
 </table>
-<a href="history.php">履歴</a>
+
 </body>
 </html>

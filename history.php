@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<?php
-$mysqli = new mysqli('localhost', 'takumi_asai', 'asataku', 'twitter');
 
-$query = "SELECT * FROM tweet ORDER BY TweetDate desc;";
-
-?>
-<form action="" method="POST">
-<table>
-<?php
-
-if ($result = $mysqli->query($query)) {
-    while ($row = $result->fetch_assoc()) {
-	        echo "<tr><td>";
-	        echo "ツイート:";
-	        echo $row["Tweet"];
-	        echo "　日時：";
-	        echo $row["TweetDate"];
-	        if($row["DeleteFlg"] == 1){
-	        	echo " 削除されています。";
-	        }
-	        echo "</td></tr>";
-	}
+<?
+function connect_db()
+{
+    $mysqli = new mysqli(
+        'localhost',
+        'takumi_asai',
+        'asataku',
+        'twitter'
+    );
+    if ($mysqli->connect_error) {
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+        . $mysqli->connect_error
+        );
+    }
+    return $mysqli;
 }
-?>
-<a href="tweet.php">戻る</a>
-</form>
-</table>
 
-</body>
-</html>
+function tweet_list()
+{
+    $mysqli = connect_db();
+    $query = "SELECT * FROM tweet ORDER BY TweetDate desc;";
+    if ($result = $mysqli->query($query)) {
+        while ($row = $result->fetch_assoc()) { ?>
+            <tr><td>
+            ツイート:
+            <?= $row["Tweet"]; ?>
+            日時：
+            <?= $row["TweetDate"]; ?>
+            <? if($row["DeleteFlg"] == 1) { ?>
+                削除されています。
+            <? } ?>
+            </td></tr>
+    <? }
+    }
+}
+
+include 'history_templates.php';
