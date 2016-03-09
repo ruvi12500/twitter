@@ -44,11 +44,11 @@ class Twitter
             $this->db_pass,
             $this->use_db
         );
-            if ($mysqli->connect_error) {
-                die('Connect Error (' . $mysqli->connect_errno . ') '
-                . $mysqli->connect_error
-                );
-            }
+        if ($mysqli->connect_error) {
+            die('Connect Error (' . $mysqli->connect_errno . ') '
+            . $mysqli->connect_error
+            );
+        }
         return $mysqli;
     }
 
@@ -81,12 +81,7 @@ class Twitter
                 (Tweet,User,TweetDate,DeleteFlg)
                 VALUE(?,?,?,0)"
             );
-            $insert->bind_param(
-                'sss',
-                $tweet,
-                $_SESSION["mailaddress"],
-                $today
-            );
+            $insert->bind_param('sss',$tweet,$_SESSION["mailaddress"],$today);
             $insert->execute();
         }
     }

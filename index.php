@@ -44,11 +44,11 @@ class Login
             $this->db_pass,
             $this->use_db
         );
-            if ($mysqli->connect_error) {
-                die('Connect Error (' . $mysqli->connect_errno . ') '
-                . $mysqli->connect_error
-                );
-            }
+        if ($mysqli->connect_error) {
+            die('Connect Error (' . $mysqli->connect_errno . ') '
+            . $mysqli->connect_error
+            );
+        }
         return $mysqli;
     }
 
@@ -64,12 +64,7 @@ class Login
                 "SELECT * FROM user WHERE MailAddress = ? AND PassWord = ?"
             );
 
-            $stmt->bind_param(
-                'ss',
-                $mailaddress,
-                $password
-            );
-
+            $stmt->bind_param('ss',$mailaddress,$password);
             $stmt->execute();
             $stmt->store_result();
 
